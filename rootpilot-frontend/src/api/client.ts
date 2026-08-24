@@ -9,7 +9,8 @@ console.info(
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 10_000,
+  // 30s to give the Gemini-backed /api/copilot/ask endpoint enough headroom for real LLM inference
+  timeout: 30_000,
   headers: { 'Content-Type': 'application/json' },
 });
 
