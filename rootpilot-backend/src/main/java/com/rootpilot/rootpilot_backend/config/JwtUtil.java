@@ -15,8 +15,9 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    // 256-bit secret key for HMAC-SHA
-    private static final String SECRET_STRING = "rootpilot_secure_jwt_token_secret_key_super_long_minimum_256_bits";
+    // 256-bit secret key for HMAC-SHA, configurable via JWT_SECRET env var
+    private static final String SECRET_STRING = System.getenv().getOrDefault(
+            "JWT_SECRET", "rootpilot_local_dev_jwt_secret_key_minimum_256_bits_long");
     private final SecretKey key = Keys.hmacShaKeyFor(SECRET_STRING.getBytes(StandardCharsets.UTF_8));
     
     // 24 Hours validity
