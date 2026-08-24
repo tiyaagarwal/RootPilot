@@ -36,9 +36,9 @@ This repository contains three core components:
 
 | Component | Path | Description |
 | :--- | :--- | :--- |
-| **Backend** | [`/rootpilot-backend`](file:///d:/RootPilot/rootpilot-backend) | Spring Boot 4.x service managing the REST API, anomaly detection, Redis caching, PostgreSQL repository, and Gemini AI. |
-| **Frontend** | [`/rootpilot-frontend`](file:///d:/RootPilot/rootpilot-frontend) | React & TypeScript SPA Dashboard utilizing Material-UI, React Flow, Zustand, and TanStack Query. |
-| **Monitored Service** | [`/monitored-service`](file:///d:/RootPilot/monitored-service) | Standalone mock microservice simulating real-world failures and publishing them directly to the RabbitMQ broker. |
+| **Backend** | [`/rootpilot-backend`](rootpilot-backend) | Spring Boot 4.x service managing the REST API, anomaly detection, Redis caching, PostgreSQL repository, and Gemini AI. |
+| **Frontend** | [`/rootpilot-frontend`](rootpilot-frontend) | React & TypeScript SPA Dashboard utilizing Material-UI, React Flow, Zustand, and TanStack Query. |
+| **Monitored Service** | [`/monitored-service`](monitored-service) | Standalone mock microservice simulating real-world failures and publishing them directly to the RabbitMQ broker. |
 
 ---
 
@@ -100,8 +100,8 @@ The production instances of the RootPilot platform are fully deployed and orches
 
 ---
 
-## 🔒 Default Credentials
-Access the console dashboard using these default profiles (password: `rootpilot`):
+## 🎮 Try the Live Demo
+The hosted deployment ships with public, demo-only accounts so reviewers can explore the dashboard without registering (password: `rootpilot`). These are not real user accounts and carry no privileged data:
 - **Administrator**: `admin`
 - **SRE Engineer**: `sre`
 - **Operator**: `operator`
