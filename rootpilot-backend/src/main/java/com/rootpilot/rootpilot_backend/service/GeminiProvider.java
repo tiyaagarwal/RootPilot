@@ -3,6 +3,8 @@ package com.rootpilot.rootpilot_backend.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rootpilot.rootpilot_backend.dto.CopilotContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
@@ -15,6 +17,7 @@ import java.util.*;
 @Service
 public class GeminiProvider implements AIProvider {
 
+    private static final Logger log = LoggerFactory.getLogger(GeminiProvider.class);
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final HttpClient httpClient = HttpClient.newBuilder()
             .connectTimeout(Duration.ofSeconds(10))
@@ -66,7 +69,7 @@ public class GeminiProvider implements AIProvider {
             String requestBodyJson = objectMapper.writeValueAsString(requestBody);
 
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey))
+                    .uri(URI.create("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey))
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(requestBodyJson))
                     .build();
@@ -113,9 +116,11 @@ public class GeminiProvider implements AIProvider {
                     fallback.put("dataSources", List.of("Gemini LLM Raw Text"));
                     return fallback;
                 }
+            } else {
+                log.warn("Gemini API returned non-200 status {}: {}", response.statusCode(), response.body());
             }
         } catch (Exception e) {
-            // Log or fallback
+            log.error("Gemini API call failed, falling back to rule-based responses", e);
         }
         return null;
     }
