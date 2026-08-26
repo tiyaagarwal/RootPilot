@@ -32,14 +32,21 @@ public class DependencyAnalysisService {
 
         for (String key : correlationKeys) {
 
-            String[] parts = key.split(":");
+            // keys are written as "correlation:<service>|<exceptionType>"
+            String[] prefixSplit = key.split(":", 2);
 
-            if (parts.length < 3) {
+            if (prefixSplit.length < 2) {
                 continue;
             }
 
-            String sourceService = parts[1];
-            String dependentService = parts[2];
+            String[] parts = prefixSplit[1].split("\\|", 2);
+
+            if (parts.length < 2) {
+                continue;
+            }
+
+            String sourceService = parts[0];
+            String dependentService = parts[1];
 
             Object value =
                     redisTemplate.opsForValue().get(key);

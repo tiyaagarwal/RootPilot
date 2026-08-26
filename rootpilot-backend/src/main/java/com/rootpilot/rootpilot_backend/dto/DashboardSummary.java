@@ -34,7 +34,9 @@ public class DashboardSummary {
         this.alertsCount = alertsCount;
         this.scoredAlertsCount = scoredAlertsCount;
         this.topCorrelation = topCorrelation;
-
+        this.topDependency = topDependency;
+        this.highestDependencyRisk = highestDependencyRisk;
+        this.totalDependencies = totalDependencies;
     }
     public int getAlertsCount() {
         return alertsCount;
