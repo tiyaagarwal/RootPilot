@@ -25,7 +25,7 @@ graph TD
 
 1. **Telemetry & Event Ingestion**: A local or remote microservice (e.g., `monitored-service`) sends simulated service failure events to **RabbitMQ**.
 2. **Backend Processing**: The **Spring Boot** backend consumes events, calculates rolling statistical deviations (**Z-Score**) over a 30-point window, and stores active counts in **Redis** for rapid retrieval. All events are persistently stored in **PostgreSQL**.
-3. **GenAI Analysis**: The **Gemini 1.5 Flash** reasoning engine analyzes live telemetry and writes triaging verdicts and SRE mitigation plans.
+3. **GenAI Analysis**: The **Gemini 3.6 Flash** reasoning engine analyzes live telemetry and writes triaging verdicts and SRE mitigation plans.
 4. **Command Center UI**: A modern **React/TS** SPA visualizes platform metrics, graphs interactive failure topology maps via **React Flow**, and provides an interactive SRE Copilot drawer.
 
 ---
