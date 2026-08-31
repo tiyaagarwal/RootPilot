@@ -42,7 +42,7 @@ npm install
 ### 2. Configure Environment Variables
 Create or edit `.env` in the root of the frontend folder:
 ```env
-VITE_API_BASE_URL=http://localhost:3000
+VITE_API_BASE_URL=http://localhost:8080
 ```
 *Note: Vite dev server automatically proxies endpoints from `/api`, `/incidents`, and `/analysis` to http://localhost:8080 to prevent CORS issues.*
 
