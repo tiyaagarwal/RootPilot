@@ -13,7 +13,7 @@ The backend service for **RootPilot**, built on Spring Boot. It acts as the core
 
 * **Event-Driven Telemetry Ingestion**: Ingests asynchronous failure events through an event-driven pipeline powered by **RabbitMQ**.
 * **Statistical Anomaly Detection (Z-Score)**: Dynamically calculates standard deviation ($\sigma$) and mean ($\mu$) over a 30-point rolling window of microservice latency and error metrics. Active Z-score violations are cached in **Redis**.
-* **GenAI-Powered SRE Copilot**: Leverages **Google Gemini 1.5 Flash API** to dynamically reason over active incidents, SLO targets, and anomalies to yield triaging recommendations and remediation code scripts.
+* **GenAI-Powered SRE Copilot**: Leverages **Google Gemini 3.6 Flash API** to dynamically reason over active incidents, SLO targets, and anomalies to yield triaging recommendations and remediation code scripts.
 * **Stateless Security**: Employs signed HMAC-SHA256 tokens for session security and route-level authorization via **Spring Security**.
 * **Fail-Safe Caching Layers**: Incorporates custom defensive wrappers around `RedisTemplate` to automatically fallback to database-only operations in the event of cache connection degradation.
 
