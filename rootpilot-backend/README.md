@@ -84,7 +84,7 @@ The application will boot and bind to **port 8080**.
 
 ### Telemetry Ingestion
 * `GET /api/incidents` - Retrieve all recorded incident history.
-* `POST /api/telemetry/ingest` - Directly push new metrics telemetry points.
+* Telemetry events are ingested asynchronously via the RabbitMQ consumer — there is no direct REST ingestion endpoint.
 
 ### AIOps Analytics (`/api/analysis`)
 * `GET /api/analysis/dashboard` - High-level metrics aggregator.
