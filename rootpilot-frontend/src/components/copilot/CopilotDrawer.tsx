@@ -9,7 +9,6 @@ import {
   Stack,
   Chip,
   CircularProgress,
-  Divider,
   Paper,
   Alert,
 } from '@mui/material';
@@ -117,7 +116,7 @@ export function CopilotDrawer({ open, onClose, contextType = 'general', contextI
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch (err) {
+    } catch {
       setConnError(true);
     } finally {
       setLoading(false);
