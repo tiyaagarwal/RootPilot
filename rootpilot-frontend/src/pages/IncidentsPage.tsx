@@ -20,9 +20,6 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
-import WarningIcon from '@mui/icons-material/Warning';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
 
 import { PageHeader } from '../components/common/PageHeader';
 import { StatusPill } from '../components/common/StatusPill';
