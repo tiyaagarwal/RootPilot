@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Box, Drawer, List, ListItemButton, ListItemIcon, ListItemText, AppBar, Toolbar, Typography, IconButton, Button, Stack, Chip, Divider, Avatar } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import DnsIcon from '@mui/icons-material/Dns';
-import ComputerIcon from '@mui/icons-material/Computer';
 import BoltIcon from '@mui/icons-material/Bolt';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
