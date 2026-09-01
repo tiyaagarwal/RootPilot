@@ -47,13 +47,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         } else {
           logout();
         }
-      } catch (e) {
+      } catch {
         // network failure, keep local state for now but don't force logout
         const savedUser = localStorage.getItem('user');
         if (savedUser) {
           try {
             setUser(JSON.parse(savedUser));
-          } catch (_) {}
+          } catch {
+            // corrupted localStorage value — ignore and fall back to unauthenticated state
+          }
         }
       } finally {
         setIsLoading(false);
