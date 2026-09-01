@@ -1,4 +1,6 @@
-# RootPilot Frontend
+# RootPilot Frontend (Archived v1)
+
+> **Archived.** Superseded by [`/rootpilot-frontend`](../rootpilot-frontend), the active frontend. Kept for reference only — not deployed, not maintained.
 
 Production-grade React/Vite frontend for the RootPilot Spring Boot AIOps backend.
 
