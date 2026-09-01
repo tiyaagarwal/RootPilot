@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card, CardContent, CardHeader, Grid, Typography, Table, TableBody, TableCell, TableHead, TableRow, Chip, Stack, Button, IconButton } from '@mui/material';
+import { Box, Card, CardContent, CardHeader, Grid, Typography, Table, TableBody, TableCell, TableHead, TableRow, Chip, Stack, Button } from '@mui/material';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import HealingIcon from '@mui/icons-material/Healing';
 import SpeedIcon from '@mui/icons-material/Speed';
@@ -7,7 +7,6 @@ import BoltIcon from '@mui/icons-material/Bolt';
 
 import { PageHeader } from '../components/common/PageHeader';
 import { KpiCard } from '../components/common/KpiCard';
-import { StatusPill } from '../components/common/StatusPill';
 import { useUiStore } from '../store/uiStore';
 import { usePlatformQuery } from '../hooks/usePlatformQuery';
 import { autonomousService } from '../services/platformServices';
