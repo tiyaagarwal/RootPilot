@@ -5,7 +5,6 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import WarningIcon from '@mui/icons-material/Warning';
 import BusinessIcon from '@mui/icons-material/Business';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip } from 'recharts';
 
 import { PageHeader } from '../components/common/PageHeader';
