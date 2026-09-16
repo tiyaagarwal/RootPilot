@@ -14,13 +14,10 @@ import {
   Drawer,
   IconButton,
   Button,
-  Divider,
   CircularProgress,
-  Grid,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import { PageHeader } from '../components/common/PageHeader';
 import { StatusPill } from '../components/common/StatusPill';
@@ -30,7 +27,6 @@ import { healthService, changeService, timelineService, infrastructureService } 
 import { LoadingState } from '../components/feedback/LoadingState';
 import { ErrorState } from '../components/feedback/ErrorState';
 import { EmptyState } from '../components/feedback/EmptyState';
-import type { ServiceReliability } from '../types/backend';
 
 export function ServiceCatalogPage() {
   const [selectedService, setSelectedService] = useState<any | null>(null);
