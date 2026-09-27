@@ -27,9 +27,17 @@ import { healthService, changeService, timelineService, infrastructureService } 
 import { LoadingState } from '../components/feedback/LoadingState';
 import { ErrorState } from '../components/feedback/ErrorState';
 import { EmptyState } from '../components/feedback/EmptyState';
+import type { ServiceReliability } from '../types/backend';
+
+type ServiceCatalogEntry = ServiceReliability & {
+  type: string;
+  status: string;
+  hostName: string;
+  containerName: string;
+};
 
 export function ServiceCatalogPage() {
-  const [selectedService, setSelectedService] = useState<any | null>(null);
+  const [selectedService, setSelectedService] = useState<ServiceCatalogEntry | null>(null);
   
   const { openCopilot } = useUiStore();
 
