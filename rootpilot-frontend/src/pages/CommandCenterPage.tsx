@@ -23,6 +23,12 @@ import {
 import { LoadingState } from '../components/feedback/LoadingState';
 import { ErrorState } from '../components/feedback/ErrorState';
 
+interface ServiceRisk {
+  serviceName: string;
+  riskScore: number;
+  prediction: string;
+}
+
 export function CommandCenterPage() {
   const { openCopilot } = useUiStore();
 
@@ -315,10 +321,10 @@ export function CommandCenterPage() {
               <CardContent sx={{ p: 0 }}>
                 {pred && pred.criticalServices > 0 ? (
                   <Stack spacing={0} divider={<Divider />}>
-                    {((predictions.data as any)?.servicesAtRisk || [
+                    {((predictions.data as { servicesAtRisk?: ServiceRisk[] } | undefined)?.servicesAtRisk || [
                       { serviceName: 'database-service', riskScore: 88, prediction: 'High disk writes and CPU thread lock risk' },
                       { serviceName: 'auth-service', riskScore: 42, prediction: 'High memory load post deployment' }
-                    ]).slice(0, 3).map((item: any, idx: number) => (
+                    ]).slice(0, 3).map((item: ServiceRisk, idx: number) => (
                       <Box key={idx} sx={{ p: 1.5 }}>
                         <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 0.5 }}>
                           <Typography variant="body2" fontWeight={750} sx={{ color: '#E2E8F0' }}>

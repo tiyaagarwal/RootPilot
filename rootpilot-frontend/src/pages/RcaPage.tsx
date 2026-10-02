@@ -12,6 +12,12 @@ import { LoadingState } from '../components/feedback/LoadingState';
 import { ErrorState } from '../components/feedback/ErrorState';
 import { EmptyState } from '../components/feedback/EmptyState';
 
+interface RcaSummary {
+  topService?: string;
+  topException?: string;
+  probableRootCause?: string;
+}
+
 export function RcaPage() {
   const { openCopilot } = useUiStore();
 
@@ -26,7 +32,7 @@ export function RcaPage() {
     return <ErrorState title="RCA Analytics Offline" refetch={() => rcaSummary.refetch()} />;
   }
 
-  const rca = rcaSummary.data as any;
+  const rca = rcaSummary.data as RcaSummary | undefined;
   const recs = recommendations.data || [];
   const deps = dependencies.data || [];
 
@@ -79,59 +85,56 @@ export function RcaPage() {
 
         {/* Detailed Anomaly Detections */}
         <Card>
-          <CardHeader title="Statistical Anomaly Detections (Z-Score > 3)" />
+          <CardHeader title="Root Cause Recommendations" />
           <CardContent sx={{ p: 0 }}>
             {recs.length > 0 ? (
               <Table className="compact-table">
                 <TableHead>
                   <TableRow>
                     <TableCell>Service</TableCell>
-                    <TableCell>Metric Type</TableCell>
-                    <TableCell>Z-Score</TableCell>
-                    <TableCell>Current Value</TableCell>
-                    <TableCell>Baseline Mean</TableCell>
-                    <TableCell>Severity</TableCell>
+                    <TableCell>Exception</TableCell>
+                    <TableCell>Incidents</TableCell>
+                    <TableCell>Risk Level</TableCell>
+                    <TableCell>Priority</TableCell>
+                    <TableCell>Recommendation</TableCell>
                     <TableCell align="right">Diagnostic</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {recs.map((rec: any, idx: number) => {
-                    const zVal = Number(rec.zscore || rec.zScore || 0).toFixed(2);
-                    return (
-                      <TableRow key={idx}>
-                        <TableCell sx={{ fontWeight: 700, color: '#E2E8F0' }}>
-                          {rec.serviceName}
-                        </TableCell>
-                        <TableCell sx={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#60A5FA' }}>
-                          {rec.metricType}
-                        </TableCell>
-                        <TableCell sx={{ fontWeight: 800, color: Math.abs(rec.zScore) > 5.0 ? '#EF4444' : '#F59E0B' }}>
-                          {zVal}
-                        </TableCell>
-                        <TableCell sx={{ color: '#F1F5F9' }}>
-                          {Number(rec.currentValue).toFixed(2)}
-                        </TableCell>
-                        <TableCell sx={{ color: 'text.secondary' }}>
-                          {Number(rec.baselineValue).toFixed(2)}
-                        </TableCell>
-                        <TableCell>
-                          <StatusPill value={rec.severity || 'HIGH'} />
-                        </TableCell>
-                        <TableCell align="right">
-                          <IconButton
-                            size="small"
-                            onClick={() => openCopilot({
-                              type: 'service',
-                              name: rec.serviceName
-                            })}
-                            sx={{ color: '#60A5FA' }}
-                          >
-                            <SmartToyIcon sx={{ fontSize: 16 }} />
-                          </IconButton>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
+                  {recs.map((rec, idx: number) => (
+                    <TableRow key={idx}>
+                      <TableCell sx={{ fontWeight: 700, color: '#E2E8F0' }}>
+                        {rec.serviceName}
+                      </TableCell>
+                      <TableCell sx={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#60A5FA' }}>
+                        {rec.exceptionName}
+                      </TableCell>
+                      <TableCell sx={{ fontWeight: 800, color: '#F1F5F9' }}>
+                        {rec.incidentCount}
+                      </TableCell>
+                      <TableCell>
+                        <StatusPill value={rec.riskLevel} />
+                      </TableCell>
+                      <TableCell>
+                        <StatusPill value={rec.priority} />
+                      </TableCell>
+                      <TableCell sx={{ color: 'text.secondary', fontSize: '12px', maxWidth: 280 }}>
+                        {rec.recommendation}
+                      </TableCell>
+                      <TableCell align="right">
+                        <IconButton
+                          size="small"
+                          onClick={() => openCopilot({
+                            type: 'service',
+                            name: rec.serviceName
+                          })}
+                          sx={{ color: '#60A5FA' }}
+                        >
+                          <SmartToyIcon sx={{ fontSize: 16 }} />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             ) : (
