@@ -46,18 +46,18 @@ You can customize the datasource and provider configurations in `src/main/resour
 
 ```bash
 # Database Setup
-export SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/postgres
-export SPRING_DATASOURCE_USERNAME=postgres
-export SPRING_DATASOURCE_PASSWORD=password
+export DB_URL=jdbc:postgresql://localhost:5432/postgres
+export DB_USERNAME=postgres
+export DB_PASSWORD=password
 
 # Message Broker Setup
-export SPRING_RABBITMQ_HOST=localhost
-export SPRING_RABBITMQ_USERNAME=guest
-export SPRING_RABBITMQ_PASSWORD=guest
+export RABBITMQ_HOST=localhost
+export RABBITMQ_USERNAME=guest
+export RABBITMQ_PASSWORD=guest
 
 # Redis Setup
-export SPRING_DATA_REDIS_HOST=localhost
-export SPRING_DATA_REDIS_PORT=6379
+export REDIS_HOST=localhost
+export REDIS_PORT=6379
 
 # Gemini Integration (Optional - Enables Live SRE Copilot responses)
 export GEMINI_API_KEY=your_gemini_api_key

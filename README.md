@@ -56,10 +56,10 @@ Ensure the following services are running locally on their default ports:
 Export the following environment variables (or save them in `.env`/config files):
 ```bash
 # Database & Cache Credentials
-export SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/postgres
-export SPRING_DATASOURCE_USERNAME=postgres
-export SPRING_DATASOURCE_PASSWORD=password
-export SPRING_DATA_REDIS_HOST=localhost
+export DB_URL=jdbc:postgresql://localhost:5432/postgres
+export DB_USERNAME=postgres
+export DB_PASSWORD=password
+export REDIS_HOST=localhost
 
 # GenAI Integration (Enables SRE Copilot reasoning)
 export GEMINI_API_KEY=your_gemini_api_key
