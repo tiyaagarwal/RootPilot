@@ -59,7 +59,7 @@ export function ServiceGraph({ title, dependencies, mode = 'dependency' }: Servi
     }));
 
     return { nodesList, edgesList };
-  }, [dependencies, mode, radius, unique]);
+  }, [dependencies, radius, unique]);
 
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
